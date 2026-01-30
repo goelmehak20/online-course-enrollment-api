@@ -85,13 +85,13 @@ Used to analyze:
 ---
 
 ## Features Achieved
-✔ Custom User Model  
-✔ Role-based Permissions  
-✔ Nested Serializers  
-✔ Filtering & Pagination  
-✔ JWT Security  
-✔ Swagger Documentation  
-✔ Silk Profiling  
+- Custom User Model
+- Role-based Permissions
+- Nested Serializers
+- Filtering & Pagination
+- JWT Security
+- Swagger Documentation
+- Silk Profiling  
 
 
 
