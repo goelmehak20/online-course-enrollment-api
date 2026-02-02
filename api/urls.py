@@ -1,14 +1,22 @@
 from django.urls import path
-from .views import *
+from django.shortcuts import redirect
+from . import views
+
+def api_root(request):
+    return redirect("/api/schema/swagger-ui/")
 
 urlpatterns = [
-    path('courses/', CourseListAPIView.as_view()),
-    path('courses/<int:pk>/', CourseRetrieveUpdateDestroyAPIView.as_view()),
+    # 👇 API FALLBACK
+    path("", api_root),
 
-    path('enroll/', EnrollmentCreateAPIView.as_view()),
-    path('enrollments/', EnrollmentListAPIView.as_view()),
+    # Your APIs
+    path("courses/", views.CourseListAPIView.as_view()),
+    path("enrollments/", views.EnrollmentListAPIView.as_view()),
+    path("enroll/", views.EnrollmentCreateAPIView.as_view()),
+    path("modules/", views.ModuleListCreateAPIView.as_view()),
 
-    path('modules/', ModuleListCreateAPIView.as_view()),
-    path('modules/<int:pk>/', ModuleRetrieveUpdateDestroyAPIView.as_view()),
-
+    # Docs
+    path("schema/", views.schema_view, name="schema"),
+    path("schema/swagger-ui/", views.swagger_ui, name="swagger-ui"),
+    path("schema/redoc/", views.redoc, name="redoc"),
 ]
