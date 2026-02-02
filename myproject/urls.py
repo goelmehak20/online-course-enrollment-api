@@ -14,9 +14,12 @@ from django.shortcuts import redirect
 def home(request):
     return redirect("/api/schema/swagger-ui/")
 
+def api_fallback(request):
+    return redirect("/api/")
+
 urlpatterns = [
     path("", home),
-
+    path("api/", api_fallback),
     path("admin/", admin.site.urls),
     path("api/", include("api.urls")),
 
