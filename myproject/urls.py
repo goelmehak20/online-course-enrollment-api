@@ -23,6 +23,7 @@ from rest_framework_simplejwt.views import (
 from drf_spectacular.views import SpectacularAPIView, SpectacularRedocView, SpectacularSwaggerView
 
 urlpatterns = [
+    path("", home),
     path('admin/', admin.site.urls),
     path('api/', include('api.urls')),
     path('silk/', include('silk.urls', namespace='silk')),
