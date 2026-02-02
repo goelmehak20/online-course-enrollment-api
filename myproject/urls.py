@@ -15,7 +15,7 @@ from django.shortcuts import redirect
 #     return redirect("/api/schema/swagger-ui/")
 
 def api_fallback(request):
-    return redirect("/api/")
+    return redirect("/api/courses/")
 
 urlpatterns = [
     path("", api_fallback),
@@ -26,7 +26,6 @@ urlpatterns = [
     path("api/token/", TokenObtainPairView.as_view(), name="token_obtain_pair"),
     path("api/token/refresh/", TokenRefreshView.as_view(), name="token_refresh"),
 
-    # ✅ CORRECT drf-spectacular URLs
     path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
     path("api/schema/swagger-ui/", SpectacularSwaggerView.as_view(url_name="schema"), name="swagger-ui"),
     path("api/schema/redoc/", SpectacularRedocView.as_view(url_name="schema"), name="redoc"),
